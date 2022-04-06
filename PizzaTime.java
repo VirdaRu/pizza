@@ -1,4 +1,4 @@
-import java.io.Console;
+//import java.io.Console;
 import java.util.Scanner;
 
 import java.text.SimpleDateFormat;
@@ -6,16 +6,21 @@ import java.util.Date;
 
 public class PizzaTime {
     public static void main(String[] args) {
-
         System.out.println("Welkom bij Java Pizza. Kan ik uw bestelling opnemen?");
-        System.out.println("Er is keuze uit: " + menu());
+        System.out.println("Er is keuze uit: "); 
+        menu();
         
         System.out.println(bestelling());
         }
 
-    public static String menu() {
-        //menu zit in aparte methode voor makkelijk toevoegen
-        return "Margherita, Salami, Tonno, Hawaii";
+    public static void menu() {
+        //menu zit in aparte methode voor makkelijk toevoegen   
+        Pizza Margaritha = new PlainPizza();
+        Pizza Salami = new Salami(new PlainPizza());
+        Pizza Tonno = new Tonno(new PlainPizza());
+        Pizza Hawaii = new Hawaii(new PlainPizza());      
+        
+        System.out.println("Margeritha " + Margaritha.getCost() + "  Salami " + Salami.getCost() + "  Tonno " + Tonno.getCost() + "  Hawaii " + Hawaii.getCost());
     }
 
     public static String datum() {
@@ -80,28 +85,31 @@ public class PizzaTime {
             System.out.println("Vul uw keus in");
         }
 
-        //kijk of pizza bekend is, anders default
-        //Margherita, Salami, Tonno, Hawaii
+        //kijk of pizza bekend is, anders default hij naar Margherita
+        Pizza Margeritha = new PlainPizza();
+        Pizza Salami = new Salami(new PlainPizza());
+        Pizza Tonno = new Tonno(new PlainPizza());
+        Pizza Hawaii = new Hawaii(new PlainPizza());
         switch (pizza) {
             case "Margherita":
-                toppings = 0;
-                extraToppings = Pizza();
+                toppings = Margeritha.getToppings();
+                extraToppings = Margeritha.getDescription();
                 break;
             case "Salami":
-                toppings = 1;
-                extraToppings = Salami();
+                toppings = Salami.getToppings();
+                extraToppings = Salami.getDescription();
                 break;
             case "Tonno":
-                toppings = 2;
-                extraToppings = Tonno();
+                toppings = Tonno.getToppings();
+                extraToppings = Tonno.getDescription();
                 break;
             case "Hawaii":
-                toppings = 2;
-                extraToppings = Hawaii();
+                toppings = Hawaii.getToppings();
+                extraToppings = Hawaii.getDescription();
                 break;
             default:
-                toppings = 0;
-                extraToppings = "";
+                toppings = Margeritha.getToppings();
+                extraToppings = Margeritha.getDescription();
                 break;
         }
 
@@ -129,20 +137,4 @@ public class PizzaTime {
         scanner.close();
         return bestelling;
     }
-
-    //Structural - The Decorator Design Pattern ((hoop ik))
-    //toppings van pizza bepalen
-    public static String Pizza() {
-        return "";
-    }
-    public static String Salami() {
-        return Pizza() + "Salami";
-    }
-    public static String Tonno() {
-        return Pizza() + "Tonijn \nUi";
-    }
-    public static String Hawaii() {
-        return Pizza() + "Ananas \nHam";
-    }
-
 }
