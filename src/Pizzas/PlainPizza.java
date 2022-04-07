@@ -1,4 +1,7 @@
 package src.Pizzas;
+
+import src.Interface.Pizza;
+
 //decorator pattern
 public class PlainPizza implements Pizza {
 
