@@ -1,5 +1,6 @@
 package src.Pizzas;
 
+import src.Interface.Pizza;
 import src.Topping.*;
 
 public class Hawaii extends ToppingDecorator{

@@ -1,6 +1,6 @@
 package src.Topping;
 
-import src.Pizzas.Pizza;
+import src.Interface.Pizza;
 
 
 //decorator pattern
