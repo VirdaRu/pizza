@@ -1,7 +1,6 @@
 package src.Topping;
 
-import src.Interface.Pizza;
-
+import src.Interface.*;
 
 //decorator pattern
 public class ToppingDecorator implements Pizza {
